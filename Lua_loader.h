@@ -1,9 +1,11 @@
+#include <iostream>
+using namespace std;
 //오브젝트들 정보 담을 클래스
 class Object_info{
 private:
 	float cpx, cpy, cpz;
 	float sx, sy, sz;
-	const char *entity_name, *mesh_name, *initial;
+	string entity_name, mesh_name, initial;
 
 public:
 	Object_info();
@@ -17,9 +19,9 @@ public:
 	float getsx();
 	float getsy();
 	float getsz();
-	const char* getentityname();
-	const char* getmeshname();
-	const char* getinitial();
+	string getentityname();
+	string getmeshname();
+	string getinitial();
 };
 
 

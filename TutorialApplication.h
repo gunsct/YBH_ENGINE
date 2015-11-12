@@ -38,15 +38,15 @@ using namespace buttonGUI;
 using namespace irrklang;
 
 lua_State* LS;
-std::vector <Object_info> obj_info(5);
+std::vector <Object_info> obj_info;
 int lua_loader(lua_State* L){//루아스크립트 정보 로드함수
 	Object_info OI;
 	//int n = lua_gettop(L);//스크립트 마지막까지 가기 위함
 
 	//set_obj("Head", "ogrehead.mesh", "HeadNode", 5, 10, 0, 0.02, 0.02, 0.02)
 	OI.set_obj(lua_tonumber(L, 4), (float)lua_tonumber(L, 5), (float)lua_tonumber(L, 6), (float)lua_tonumber(L, 7), 
-		(float)lua_tonumber(L, 8), (float)lua_tonumber(L, 9), luaL_checkstring(L, 1), luaL_checkstring(L, 2), luaL_checkstring(L, 3));
-
+		(float)lua_tonumber(L, 8), (float)lua_tonumber(L, 9), lua_tostring(L, 1), lua_tostring(L, 2), lua_tostring(L, 3));
+	
 	obj_info.push_back(OI);
 
 	return 0;

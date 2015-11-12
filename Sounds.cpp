@@ -30,7 +30,7 @@ void Sound::set_sound()
 	// tells the engine to play it looped.
 
 	// play some sound stream, looped
-	engine->play2D("C:/Users/gunsct/Desktop/project/graphics/YBH_Engine/YBH_Engine/resource/doctorwho.mp3", true);
+	engine->play2D("..\\doctorwho.mp3", true);
 	engine->setSoundVolume(1.0f);
 
 	// In a loop, wait until user presses 'q' to exit or another key to

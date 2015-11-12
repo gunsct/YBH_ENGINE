@@ -31,13 +31,13 @@ float Object_info::getsy(){
 float Object_info::getsz(){
 	return sz;
 }
-const char* Object_info::getentityname(){
+string Object_info::getentityname(){
 	return entity_name;
 }
-const char* Object_info::getmeshname(){
+string Object_info::getmeshname(){
 	return mesh_name;
 }
-const char* Object_info::getinitial(){
+string Object_info::getinitial(){
 	return initial;
 }
 

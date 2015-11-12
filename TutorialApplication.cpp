@@ -10,7 +10,7 @@ ___                 __    __ _ _    _
 / \_// (_| | | |  __/  \  /\  /| |   <| |
 \___/ \__, |_|  \___|   \/  \/ |_|_|\_\_|
 |___/                              
-Tutorial Framework
+Tutorial Framework 
 http://www.ogre3d.org/tikiwiki/
 -----------------------------------------------------------------------------
 */
@@ -70,10 +70,11 @@ void TutorialApplication::createScene(void)
 	entGround->setMaterialName("Examples/Rockwall");
 	entGround->setCastShadows(false);
 	
+	//루아로 불러들인것
 	physics.addCuboid(obj_info[0].getcpx(), obj_info[0].getcpy(), obj_info[0].getcpz());//이건 한 오브젝트에 한개씩 해줘야하는거같다...xyz위치,충돌박스xyz크기정해주는듯
 
-	Ogre::Entity* ogreCube = mSceneMgr->createEntity("Head", "ogrehead.mesh");
-	cubeNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode");
+	Ogre::Entity* ogreCube = mSceneMgr->createEntity(obj_info[0].getentityname(), obj_info[0].getmeshname());
+	cubeNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(obj_info[0].getinitial());
 	cubeNode->setPosition(0, 0, 0);
 
 	cubeNode->attachObject(ogreCube);
@@ -82,7 +83,8 @@ void TutorialApplication::createScene(void)
 	p = physics.getCubePosition();//해당 충돌박스의 좌료를 불러옴
 	Ogre::Vector3 pos = Ogre::Vector3(p(0), p(1), p(2));//그 좌료를 오거노드에 입력
 	cubeNode->setPosition(pos);//셋팅
-	//add cube physically, then graphically
+
+	////add cube physically, then graphically
 	//physics.addCuboid(5, 10, 0);//이건 한 오브젝트에 한개씩 해줘야하는거같다...xyz위치,충돌박스xyz크기정해주는듯
 
 	//Ogre::Entity* ogreCube = mSceneMgr->createEntity("Head", "ogrehead.mesh");
@@ -306,7 +308,7 @@ extern "C" {
 		TutorialApplication app;
 
 		try {
-			app.callLua("lua_loader", lua_loader, "set_obj.lua");//랜더링 전에 미리 루아스크립트에서 싹다 좌표같은거 받아옴
+			app.callLua("lua_loader", lua_loader, "..\\set_obj.lua");//랜더링 전에 미리 루아스크립트에서 싹다 좌표같은거 받아옴
 			app.go();//그다음 랜더링 반복함
 		
 		} catch( Ogre::Exception& e ) {
