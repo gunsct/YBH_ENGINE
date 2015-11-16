@@ -1,71 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="리소스 파일">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스+헤더 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="소스+헤더 파일\physics">
+      <UniqueIdentifier>{e4efe614-4704-45a5-81b1-0affa6d0b466}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스+헤더 파일\ui_sound">
+      <UniqueIdentifier>{91b0cf2a-4f17-4c4f-a33d-0a1846058ff5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스+헤더 파일\script_loader">
+      <UniqueIdentifier>{7bc6dfe5-0416-4706-b526-23be0e21ff2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스+헤더 파일\main">
+      <UniqueIdentifier>{9f859613-f005-4715-a9bb-ca982772841b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BaseApplication.h">
-      <Filter>헤더 파일</Filter>
+    <ClCompile Include="physics\Physics.cpp">
+      <Filter>소스+헤더 파일\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\Havok.cpp">
+      <Filter>소스+헤더 파일\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="ui_sound\buttonGUI.cpp">
+      <Filter>소스+헤더 파일\ui_sound</Filter>
+    </ClCompile>
+    <ClCompile Include="ui_sound\Sounds.cpp">
+      <Filter>소스+헤더 파일\ui_sound</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\Lua_loader.cpp">
+      <Filter>소스+헤더 파일\script_loader</Filter>
+    </ClCompile>
+    <ClCompile Include="main\BaseApplication.cpp">
+      <Filter>소스+헤더 파일\main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\Application_main.cpp">
+      <Filter>소스+헤더 파일\main</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main\BaseApplication.h">
+      <Filter>소스+헤더 파일\main</Filter>
     </ClInclude>
-    <ClInclude Include="buttonGUI.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="lua\Lua_loader.h">
+      <Filter>소스+헤더 파일\script_loader</Filter>
     </ClInclude>
-    <ClInclude Include="Havok.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="ui_sound\buttonGUI.h">
+      <Filter>소스+헤더 파일\ui_sound</Filter>
     </ClInclude>
-    <ClInclude Include="Physics.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="ui_sound\Sounds.h">
+      <Filter>소스+헤더 파일\ui_sound</Filter>
     </ClInclude>
-    <ClInclude Include="Sounds.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="physics\Havok.h">
+      <Filter>소스+헤더 파일\physics</Filter>
     </ClInclude>
-    <ClInclude Include="TutorialApplication.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="physics\Physics.h">
+      <Filter>소스+헤더 파일\physics</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>리소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Lua_loader.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="main\Application_main.h">
+      <Filter>소스+헤더 파일\main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BaseApplication.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="buttonGUI.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Havok.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Sounds.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="TutorialApplication.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Lua_loader.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="set_obj.lua">
-      <Filter>소스 파일</Filter>
+    <None Include="..\..\..\..\..\Downloads\OgreSDK_1.9\bin\resource\set_obj.lua">
+      <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
 </Project>

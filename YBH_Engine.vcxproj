@@ -11,29 +11,26 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BaseApplication.h" />
-    <ClInclude Include="buttonGUI.h" />
-    <ClInclude Include="Havok.h" />
-    <ClInclude Include="Lua_loader.h" />
-    <ClInclude Include="Physics.h" />
+    <ClCompile Include="lua\Lua_loader.cpp" />
+    <ClCompile Include="main\BaseApplication.cpp" />
+    <ClCompile Include="main\Application_main.cpp" />
+    <ClCompile Include="physics\Havok.cpp" />
+    <ClCompile Include="physics\Physics.cpp" />
+    <ClCompile Include="ui_sound\buttonGUI.cpp" />
+    <ClCompile Include="ui_sound\Sounds.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lua\Lua_loader.h" />
+    <ClInclude Include="main\BaseApplication.h" />
+    <ClInclude Include="main\Application_main.h" />
+    <ClInclude Include="physics\Havok.h" />
+    <ClInclude Include="physics\Physics.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Sounds.h" />
-    <ClInclude Include="TutorialApplication.h" />
+    <ClInclude Include="ui_sound\buttonGUI.h" />
+    <ClInclude Include="ui_sound\Sounds.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BaseApplication.cpp" />
-    <ClCompile Include="buttonGUI.cpp" />
-    <ClCompile Include="Havok.cpp" />
-    <ClCompile Include="Lua_loader.cpp" />
-    <ClCompile Include="Physics.cpp" />
-    <ClCompile Include="Sounds.cpp">
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
-    <ClCompile Include="TutorialApplication.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="set_obj.lua" />
+    <None Include="..\..\..\..\..\Downloads\OgreSDK_1.9\bin\resource\set_obj.lua" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CECA2044-5D8F-4CDB-ABF3-EFE00393DB7E}</ProjectGuid>

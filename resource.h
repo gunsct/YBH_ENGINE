@@ -12,3 +12,6 @@
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
+
+#define OBJ_NUM 3
+#define PLAYER 0
