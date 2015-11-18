@@ -46,14 +46,15 @@ Application_main::~Application_main(void){}
 
 void Application_main::createScene(void)
 {
+	//background sound
+	sound.backgroud(1.0f);
 	//obj setting
 	set_obj();
 
 	//ui
 	set_button();
-
-	//sound
-	sound.set_sound();
+	
+	
 }
 
 void Application_main::destroyScene(void){
@@ -185,6 +186,7 @@ bool Application_main::processUnbufferedInput(const Ogre::FrameEvent& fe)
 		{
 			Ogre::Light* light = mSceneMgr->getLight("PointLight");
 			light->setVisible(!light->isVisible());
+			sound.effect(CRASH, 1.0f);
 		}
 
 		mouseDownLastFrame = leftMouseDown;
@@ -198,6 +200,7 @@ bool Application_main::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
 			Ogre::Light* light = mSceneMgr->getLight("PointLight");
 			light->setVisible(!light->isVisible());
+			sound.effect(ALARM, 1.0f);
 		}
 	}
 

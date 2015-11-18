@@ -110,43 +110,6 @@ void Physics::addCuboid(float posX, float posY, float posZ, float halfX, float h
 	//rigidBody->removeReference();
 }
 
-void Physics::addHead(float posX, float posY, float posZ, float halfX, float halfY, float halfZ){
-
-	hkVector4 pos(posX, posY, posZ);
-	//hkpRigidBody* rigidBody;
-
-	// Create a box 1 by 2 by 3
-	hkVector4 halfExtents; halfExtents.set(halfX, halfY, halfZ);
-	hkpBoxShape* boxShape = new hkpBoxShape(halfExtents);
-
-	hkpRigidBodyCinfo bodyCinfo;
-	bodyCinfo.m_motionType = hkpMotion::MOTION_DYNAMIC;//여기는 뭔가 충돌시 모션이랑 그 퀄리티를 정하는거같다
-	bodyCinfo.m_qualityType = HK_COLLIDABLE_QUALITY_CHARACTER;// default collision quality
-
-	bodyCinfo.m_shape = boxShape;
-	bodyCinfo.m_position = pos;
-
-	//  Calculate the mass properties for the shape
-	const hkReal boxMass = 0.1f;//질량인데 충돌시 움직이는거에 영향 끼치겠지?
-	hkMassProperties massProperties;
-	hkpInertiaTensorComputer::computeShapeVolumeMassProperties(boxShape, boxMass, massProperties);
-
-	bodyCinfo.setMassProperties(massProperties);
-
-	// Create the rigid body
-	headShape = new hkpRigidBody(bodyCinfo);
-
-	// No longer need the reference on the boxShape, as the rigidBody now owns it
-	boxShape->removeReference();
-
-
-	// Add the rigidBody to the world
-	world->addEntity(headShape);
-
-	// No longer need the ref of rigidBody - as the world now owns it
-	//rigidBody->removeReference();
-}
-
 //아래는 게터세터임 오거노드에 붙일때 그 충돌박스 좌표주고 움직일때 충돌박스위치를 오거노드 위치로 해줄때 씀
 hkVector4 Physics::getCubePosition(int _index)
 {
@@ -161,14 +124,4 @@ void Physics::setCubePosition(const hkVector4& newPos, int _index)
 hkVector4 Physics::getPlatPosition()
 {
 	return platformShape->getPosition();
-}
-
-hkVector4 Physics::getHeadPosition()
-{
-	return headShape->getPosition();
-}
-
-void Physics::setHeadPosition(const hkVector4& newPos)
-{
-	headShape->setPosition(newPos);
 }

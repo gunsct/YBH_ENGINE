@@ -17,7 +17,26 @@ Sound::~Sound()
 
 	engine->drop(); // delete engine
 }
-
+void Sound::backgroud(float _vol){
+	engine->play2D("..\\resource\\doctorwho.mp3", true);
+	engine->setSoundVolume(_vol);
+}
+void Sound::effect(soundtype _type, float _vol){
+	switch (_type){
+		case CRASH:
+			engine->play2D("..\\resource\\Crash.mp3", false);
+			engine->setSoundVolume(_vol);
+			break;
+		case DEAD:
+			engine->play2D("..\\resource\\Death.mp3", false);
+			engine->setSoundVolume(_vol);
+			break;
+		case ALARM:
+			engine->play2D("..\\resource\\Alarm.mp3", false);
+			engine->setSoundVolume(_vol);
+			break;
+	}
+}
 void Sound::set_sound()
 {
 	//if (!engine)
@@ -30,8 +49,7 @@ void Sound::set_sound()
 	// tells the engine to play it looped.
 
 	// play some sound stream, looped
-	engine->play2D("..\\resource\\doctorwho.mp3", true);
-	engine->setSoundVolume(1.0f);
+	
 
 	// In a loop, wait until user presses 'q' to exit or another key to
 	// play another sound.

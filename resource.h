@@ -4,6 +4,8 @@
 
 // 다음은 새 개체에 사용할 기본값입니다.
 // 
+#pragma once//enum때문에라도 해줘야되
+
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        101
@@ -15,3 +17,5 @@
 
 #define OBJ_NUM 3
 #define PLAYER 0
+
+enum soundtype{CRASH, DEAD, ALARM};
