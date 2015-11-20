@@ -46,7 +46,8 @@ using namespace irrklang;
 
 lua_State* LS;
 std::vector <Object_info> obj_info;
-int lua_loader(lua_State* L){//루아스크립트 정보 로드함수
+std::vector <Gui_info> gui_info;
+int lua_loader_o(lua_State* L){//루아스크립트 정보 로드함수
 	Object_info OI;
 
 	//정보 객체 만들어서 거기에 루아스크립트에 있는 값 다 넣는다.
@@ -54,6 +55,17 @@ int lua_loader(lua_State* L){//루아스크립트 정보 로드함수
 		(float)lua_tonumber(L, 8), (float)lua_tonumber(L, 9), lua_tostring(L, 1), lua_tostring(L, 2), lua_tostring(L, 3));
 	
 	obj_info.push_back(OI);//그다음 벡터에 넣어줌
+
+	return 0;
+}
+
+int lua_loader_u(lua_State* L){//루아스크립트 정보 로드함수
+	Gui_info GI;
+
+	//정보 객체 만들어서 거기에 루아스크립트에 있는 값 다 넣는다.
+	GI.set_obj(lua_tonumber(L, 3), (float)lua_tonumber(L, 4), (float)lua_tonumber(L, 5), (float)lua_tonumber(L, 6), lua_tostring(L, 1), lua_tostring(L, 2));
+
+	gui_info.push_back(GI);//그다음 벡터에 넣어줌
 
 	return 0;
 }
@@ -97,6 +109,7 @@ private:
 	//유아이
 	buttonGUI::buttonManager* buttonMgr;
 	void set_button();
+	void event_button();
 	void handleButtonEvent(buttonEvent * e);
 	
 	//사운드

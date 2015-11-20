@@ -16,6 +16,7 @@
 #endif
 
 #define OBJ_NUM 3
+#define UI_NUM 4
 #define PLAYER 0
 
 enum soundtype{CRASH, DEAD, ALARM};

@@ -24,4 +24,23 @@ public:
 	string getinitial();
 };
 
+class Gui_info{
+private:
+	string entity_name, mesh_name;
+	float px, py;
+	float sx, sy;
+	
 
+public:
+	Gui_info();
+	~Gui_info();
+
+	void set_obj(float _px, float _py, float _sx, float _sy, const char* _entity_name, const char* _mesh_name);
+
+	float getpx();
+	float getpy();
+	float getsx();
+	float getsy();
+	string getentityname();
+	string getmeshname();
+};

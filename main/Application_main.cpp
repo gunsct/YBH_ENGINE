@@ -82,7 +82,7 @@ bool Application_main::frameRenderingQueued(const Ogre::FrameEvent& evt){
 	return BaseApplication::frameRenderingQueued(evt);
 }
 void Application_main::set_obj(){
-	callLua("lua_loader", lua_loader, "..\\resource\\set_obj.lua");//랜더링 전에 미리 루아스크립트에서 싹다 좌표같은거 받아옴
+	callLua("lua_loader_o", lua_loader_o, "..\\resource\\set_obj.lua");//랜더링 전에 미리 루아스크립트에서 싹다 좌표같은거 받아옴
 
 	physics.SetUp();//물리엔진 셋업
 
@@ -131,29 +131,27 @@ void Application_main::set_obj(){
 	//마우스 커서랑, 뭐 클릭 이벤트, 그런거 공부하자
 }
 void Application_main::set_button(){
+	callLua("lua_loader_u", lua_loader_u, "..\\resource\\set_ui.lua");//랜더링 전에 미리 루아스크립트에서 싹다 좌표같은거 받아옴
 	// you must set this on your camera, or any changes to the resolution or fov will mess up the alignment of any buttonMeshes.
 	mCamera->setAutoAspectRatio(true);
 	//create a text scheme
 	textScheme myTextScheme("vipond", 20, 0, 1, 0, 1);
 	//instance the buttonManager
 	buttonMgr = new buttonGUI::buttonManager("myTextAreaMaterial", myTextScheme, mSceneMgr, "MainCam");
-	buttonMgr->showCursor();
-	buttonMgr->createButton("cursor5", "cursorMat5", buttonPosition(TOP_RIGHT, 30, 200), 32, 32);
-	buttonMgr->setCursor("cursorMat5", 50, 50, 200, 400);
+	ShowCursor(true);
+	buttonMgr->setCursor("cursorMat5", 50, 50, 3, 3);
 
 	//create a button
-	buttonMgr->createButton("building", "buildingMat", buttonPosition(TOP_RIGHT, 50, 400), 64, 64);
-
-
-	buttonMgr->createButton("buildingOn", "buildingMat.onClick", buttonPosition(TOP_RIGHT, 100, 400), 64, 64);
-	
-	buttonMgr->createButton("textFieldAnim1", "darkInput.mouseOver", buttonPosition(TOP_RIGHT, 100, 300),256, 32);
-	buttonMgr->createButton("textFieldAnim2", "darkInput.mouseOver", buttonPosition(TOP_RIGHT, 100, 200), 256, 32);
-	buttonMgr->createButton("textFieldAnim3", "darkInput.mouseOver", buttonPosition(TOP_RIGHT, 100, 100), 256, 32);
+	for (int i = 0; i < UI_NUM; i++){
+		buttonMgr->createButton(gui_info[i].getentityname(), gui_info[i].getmeshname(), buttonPosition(TOP_RIGHT, gui_info[i].getpx(), gui_info[i].getpy()), gui_info[i].getsx(), gui_info[i].getsy());
+	}
 	
 	buttonMgr->resetScreenResolution();
 }
 
+void Application_main::event_button(){
+
+}
 //do something with the event
 void Application_main::handleButtonEvent(buttonEvent * e)
 {

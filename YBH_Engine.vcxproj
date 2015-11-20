@@ -31,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\..\Downloads\OgreSDK_1.9\bin\resource\set_obj.lua" />
+    <None Include="..\..\..\..\..\Downloads\OgreSDK_1.9\bin\resource\set_ui.lua" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CECA2044-5D8F-4CDB-ABF3-EFE00393DB7E}</ProjectGuid>

@@ -304,11 +304,14 @@ bool BaseApplication::keyPressed( const OIS::KeyEvent &arg )
 	//마우스 커서 온오프모드 온은 시야방향 조절 못하는걸로
 	if (arg.key == OIS::KC_M)
 	{
-		if (mouseCursor == false)
-		{
+		if (mouseCursor == false){
+			ShowCursor(true);
 			mouseCursor = true;
 		}
-		else mouseCursor = false;
+		else{
+			ShowCursor(false);
+			mouseCursor = false;
+		}
 	}
     if (arg.key == OIS::KC_F)   // toggle visibility of advanced frame stats
     {

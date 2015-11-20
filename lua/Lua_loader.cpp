@@ -41,3 +41,37 @@ string Object_info::getinitial(){
 	return initial;
 }
 
+
+
+
+Gui_info::Gui_info(){
+	px = py = sx = sy = 0.0f;
+	entity_name = mesh_name = "";
+}
+Gui_info::~Gui_info(){}
+
+void Gui_info::set_obj(float _px, float _py, float _sx, float _sy, const char* _entity_name, const char* _mesh_name)
+{
+	px = _px;	py = _py;
+	sx = _sx;	sy = _sy;
+	entity_name = _entity_name;	mesh_name = _mesh_name;
+}
+
+float Gui_info::getpx(){
+	return px;
+}
+float Gui_info::getpy(){
+	return py;
+}
+float Gui_info::getsx(){
+	return sx;
+}
+float Gui_info::getsy(){
+	return sy;
+}
+string Gui_info::getentityname(){
+	return entity_name;
+}
+string Gui_info::getmeshname(){
+	return mesh_name;
+}
