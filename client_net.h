@@ -2,6 +2,8 @@
 #include <winsock2.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <conio.h>
+#include <string.h>
 
 #define SERVERIP   "127.0.0.1"
 #define SERVERPORT 9000
@@ -48,7 +50,7 @@ private:
 
 	//패킷구성용
 	int cli_num;
-	char regi;
+	int regi;
 	float xpos, ypos, zpos;
 	char temp[];//나중에 inot같은거로 변환시 사용될듯
 
@@ -66,8 +68,13 @@ public:
 	//패킷부분하자
 	//char* get_msg(); 생각해보니 이건 파싱에서 가져가야지...
 	void set_position(float x, float y, float z);//게임 구동부에서 오브젝트 좌표 가져올것
+	
 	void set_packet();
 	char get_packer();
+
+	float get_xpos();
+	float get_ypos();
+	float get_zpos();
 
 	//최종구동
 	void run_network();//묶어서 한방에 돌리자

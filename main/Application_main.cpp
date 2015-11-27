@@ -71,6 +71,9 @@ bool Application_main::frameRenderingQueued(const Ogre::FrameEvent& evt){
 
 	physics.Simulate(evt.timeSinceLastFrame);
 	//여긴 실시간으로 갱신해주는 부분인거같다
+
+	//네트워크를 여기에 넣으면 되지않을까 한다
+
 	//해당 충돌박스랑 오거노드랑 같이 해서 놓으면 되는거같음
 
 	for (int i = 0; i < OBJ_NUM; i++){//2 대신 나중에 OBJ_NUM이게 들어가야되
