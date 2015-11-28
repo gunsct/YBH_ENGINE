@@ -65,16 +65,18 @@ void Application_main::destroyScene(void){
 
 bool Application_main::frameRenderingQueued(const Ogre::FrameEvent& evt){
 	bool ret = BaseApplication::frameRenderingQueued(evt);
+	//여긴 실시간으로 갱신해주는 부분인거같다
+
+	//네트워크를 여기에 넣으면 되지않을까 한다
+	//맨위에서 좌표 받아와야 아래에서 바꾸..겠지?
 
 	if (!processUnbufferedInput(evt))
 		return false;
 
 	physics.Simulate(evt.timeSinceLastFrame);
-	//여긴 실시간으로 갱신해주는 부분인거같다
-
-	//네트워크를 여기에 넣으면 되지않을까 한다
-
 	//해당 충돌박스랑 오거노드랑 같이 해서 놓으면 되는거같음
+
+	//이거는 나중에 스위치나 뭐로 해서 따로 플레이어들용 만들어야할듯
 
 	for (int i = 0; i < OBJ_NUM; i++){//2 대신 나중에 OBJ_NUM이게 들어가야되
 		p[i] = physics.getCubePosition(i);

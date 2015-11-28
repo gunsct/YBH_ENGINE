@@ -72,6 +72,8 @@ public:
 	void set_packet();
 	char get_packer();
 
+	void parsing_msg(char packet);//패킷 분할해서 따로 배열 담고 자료형변환해서 원래 값들로 줄꺼다
+	int get_cli_num();
 	float get_xpos();
 	float get_ypos();
 	float get_zpos();

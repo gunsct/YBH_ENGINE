@@ -81,6 +81,9 @@ void Client::msg_transfer(){
 		else if (retval == 0)
 			break;
 
+		//받은 메시지 파싱해서 좌표값 다 넘겨줄듯
+		//parsing_msg
+
 		// 받은 데이터 출력
 		buf[retval] = '\0';
 		printf("[TCP 클라이언트] %d바이트를 받았습니다.\n", retval);
@@ -104,22 +107,69 @@ void Client::set_packet(){
 	//int cli_num;
 	//char regi;
 	//float xpos, ypos, zpos;
-	//char temp[];//나중에 inot같은거로 변환시 사용될듯
 	sprintf(buf, "%d %d %f %f %f", cli_num, regi, xpos, ypos, zpos);
-	//char test[100];
-	//float x, y, z;
-	//x = 10.35225f;
-	//y = 436.12312f;
-	//z = 4.5215423;
+}
 
-	//int num = 0;
-	//int regi = 1;
-	//sprintf_s(test, "%d %d %f %f %f", num, regi, x, y, z); // 빈 배열 test 에 여러 문자열 집어넣기
-	//printf("%s", test);
+void Client::parsing_msg(char packet){
+	int point_num = 0;//매번 이 함수 부를때마다 당연히 다 초기화 되야됨
+	int buf_pos = 0;
+	char pnum[2] = "";
+	char pregi[1] = "";
+	char pxp[100] = "";
+	char pyp[100] = "";
+	char pzp[100] = "";
+
+	for (int i = 0; i < sizeof(buf); i++){//각 요소를 분할해서 문자배열에 넣어줌 이걸 다른 자료형으로 다들 변환할거임
+		if (buf[i] == ' '){ //띄어쓰기 구분으로 패킷을 요소로 나누고
+			point_num++;//요소 단위 올려줌
+			buf_pos = 0;//요소 버퍼위치를 다시 0으로
+		}
+
+		else{//띄어쓰기 아닐때만 요소 분할된거 값을 넣어줌
+			switch (point_num){
+				case 0:
+					pnum[buf_pos] = buf[i];
+					buf_pos++;
+					break;
+
+				case 1:
+					pregi[buf_pos] = buf[i];
+					buf_pos++;
+					break;
+
+				case 2:
+					pxp[buf_pos] = buf[i];
+					buf_pos++;
+					break;
+
+				case 3:
+					pyp[buf_pos] = buf[i];
+					buf_pos++;
+					break;
+
+				case 4:
+					pzp[buf_pos] = buf[i];
+					buf_pos++;
+					break;
+
+			}
+		}
+	}
+
+	//각 문자 배열로 들어간 요소들 자료형변환해야함
+	cli_num = atoi(pnum);
+	regi = atoi(pregi);
+	xpos = atof(pxp);
+	ypos = atof(pyp);
+	zpos = atof(pzp);
 }
 
 char Client::get_packer(){
 	//return buf; 아마 이거 포인터로 하지 않을까 생각된다
+}
+
+int Client::get_cli_num(){
+	return cli_num;
 }
 
 float  Client::get_xpos(){
