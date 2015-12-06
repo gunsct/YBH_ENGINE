@@ -47,10 +47,10 @@
     <ClCompile Include="main\Application_main.cpp">
       <Filter>소스+헤더 파일\main</Filter>
     </ClCompile>
-    <ClCompile Include="client_net.cpp">
+    <ClCompile Include="network\Client.cpp">
       <Filter>소스+헤더 파일\network</Filter>
     </ClCompile>
-    <ClCompile Include="parser.cpp">
+    <ClCompile Include="network\Parser.cpp">
       <Filter>소스+헤더 파일\network</Filter>
     </ClCompile>
   </ItemGroup>
@@ -79,10 +79,13 @@
     <ClInclude Include="main\Application_main.h">
       <Filter>소스+헤더 파일\main</Filter>
     </ClInclude>
-    <ClInclude Include="client_net.h">
+    <ClInclude Include="network\Client.h">
       <Filter>소스+헤더 파일\network</Filter>
     </ClInclude>
-    <ClInclude Include="parser.h">
+    <ClInclude Include="network\Parser.h">
+      <Filter>소스+헤더 파일\network</Filter>
+    </ClInclude>
+    <ClInclude Include="network\Synchronization.h">
       <Filter>소스+헤더 파일\network</Filter>
     </ClInclude>
   </ItemGroup>

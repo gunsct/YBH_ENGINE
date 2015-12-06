@@ -11,22 +11,38 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="client_net.cpp" />
     <ClCompile Include="lua\Lua_loader.cpp" />
     <ClCompile Include="main\BaseApplication.cpp" />
     <ClCompile Include="main\Application_main.cpp" />
-    <ClCompile Include="parser.cpp" />
+    <ClCompile Include="network\Client.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="network\Parser.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="physics\Havok.cpp" />
     <ClCompile Include="physics\Physics.cpp" />
     <ClCompile Include="ui_sound\buttonGUI.cpp" />
     <ClCompile Include="ui_sound\Sounds.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="client_net.h" />
     <ClInclude Include="lua\Lua_loader.h" />
     <ClInclude Include="main\BaseApplication.h" />
     <ClInclude Include="main\Application_main.h" />
-    <ClInclude Include="parser.h" />
+    <ClInclude Include="network\Client.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="network\Parser.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="network\Synchronization.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="physics\Havok.h" />
     <ClInclude Include="physics\Physics.h" />
     <ClInclude Include="resource.h" />

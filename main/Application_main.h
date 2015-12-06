@@ -14,6 +14,7 @@ This source file is part of the
       http://www.ogre3d.org/tikiwiki/
 -----------------------------------------------------------------------------
 */
+
 #ifndef __Application_main_h_
 #define __Application_main_h_
 
@@ -43,6 +44,12 @@ using namespace irrklang;
 
 #include "BaseApplication.h"
 #include "../resource.h"//define용도
+
+
+//네트워크 
+//#include "../network/Client.h"
+
+
 
 lua_State* LS;
 std::vector <Object_info> obj_info;
