@@ -16,6 +16,9 @@
 #endif
 
 #define OBJ_NUM 3
+#define SIZE_XMAP 10
+#define SIZE_YMAP 10
+#define SIZE_SECTION 10
 #define UI_NUM 4
 #define PLAYER 0
 

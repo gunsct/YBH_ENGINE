@@ -72,7 +72,16 @@ bool Application_main::frameRenderingQueued(const Ogre::FrameEvent& evt){
 	if (!processUnbufferedInput(evt))
 		return false;
 
+	//여기에 센션 충돌처리 넣어줘야겠다 심화적인건 못건드리지만 전체충돌을 일정 구역내에서만 켰다 껏다하게 하자
+	//for (int i = 1; i < OBJ_NUM; i++){//2 대신 나중에 OBJ_NUM이게 들어가야되
+	//	//pos[i] = ObjNode[i]->getPosition();
+
+	//	//if ((pos[PLAYER].x - pos[i].x)*(pos[PLAYER].x - pos[i].x) <100.0)
+	//	if (ObjSectionNum[PLAYER] == ObjSectionNum[i])
+	//		physics.Simulate(evt.timeSinceLastFrame);
+	//}
 	physics.Simulate(evt.timeSinceLastFrame);
+
 	//해당 충돌박스랑 오거노드랑 같이 해서 놓으면 되는거같음
 
 	//이거는 나중에 스위치나 뭐로 해서 따로 플레이어들용 만들어야할듯
@@ -88,6 +97,21 @@ bool Application_main::frameRenderingQueued(const Ogre::FrameEvent& evt){
 		p[i] = physics.getCubePosition(i);
 		pos[i] = Ogre::Vector3(p[i](0), p[i](1), p[i](2));
 		ObjNode[i]->setPosition(pos[i]);
+
+		if (pos[i].y < 2)
+		{
+			hkVector4 ps(pos[i].x, 100.0f, pos[i].z);
+			physics.setCubePosition(ps , i);
+		}
+
+		/*for (int sx = -5; sx < 5; sx++){
+			if (sx*SIZE_SECTION < pos[i].x <= (sx + 1)*SIZE_SECTION){
+				for (int sz = -5; sz < 5; sz++){
+					if (sz*SIZE_SECTION < pos[i].z <= (sz + 1)*SIZE_SECTION)
+						ObjSectionNum[i] = sx + 100 * sz;
+				}
+			}
+		}*/
 	}
 	
 	return BaseApplication::frameRenderingQueued(evt);
@@ -129,7 +153,7 @@ void Application_main::set_obj(){
 		Ogre::Entity* ogreCube = mSceneMgr->createEntity(obj_info[i].getentityname(), obj_info[i].getmeshname());
 		ObjNode[i] = mSceneMgr->getRootSceneNode()->createChildSceneNode(obj_info[i].getinitial());
 		ObjNode[i]->setPosition(0, 0, 0);
-
+		
 		ObjNode[i]->attachObject(ogreCube);
 		ObjNode[i]->scale(obj_info[i].getsx(), obj_info[i].getsy(), obj_info[i].getsz());
 

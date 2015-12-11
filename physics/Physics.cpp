@@ -77,7 +77,7 @@ void Physics::addCuboid(float posX, float posY, float posZ, float halfX, float h
 	hkVector4 pos(posX, posY, posZ);
 	//hkpRigidBody* rigidBody;
 
-	// Create a box 1 by 2 by 3
+	// Create a box 1 by 2 by 3 
 	hkVector4 halfExtents; halfExtents.set(halfX, halfY, halfZ);
 	hkpBoxShape* boxShape = new hkpBoxShape(halfExtents);
 

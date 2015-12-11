@@ -111,6 +111,7 @@ private:
 	Physics physics;
 	hkVector4 p[OBJ_NUM];//오브젝트 수만큼 콜리더 위치받을것도 만들어줌
 	Ogre::Vector3 pos[OBJ_NUM];//같은 이유
+	int ObjSectionNum[OBJ_NUM];
 
 	//유아이
 	buttonGUI::buttonManager* buttonMgr;
