@@ -14,7 +14,6 @@ Tutorial Framework
 http://www.ogre3d.org/tikiwiki/
 -----------------------------------------------------------------------------
 */
-
 #pragma comment(lib,"user32")
 #include "Application_main.h"
 
@@ -54,7 +53,7 @@ void Application_main::createScene(void)
 	//ui
 	set_button();
 	
-	
+	cli.run_client();
 }
 
 void Application_main::destroyScene(void){
@@ -66,7 +65,7 @@ void Application_main::destroyScene(void){
 bool Application_main::frameRenderingQueued(const Ogre::FrameEvent& evt){
 	bool ret = BaseApplication::frameRenderingQueued(evt);
 	//여긴 실시간으로 갱신해주는 부분인거같다
-
+	cli.transfer();
 	//네트워크를 여기에 넣으면 되지않을까 한다
 	//맨위에서 좌표 받아와야 아래에서 바꾸..겠지?
 
@@ -78,12 +77,19 @@ bool Application_main::frameRenderingQueued(const Ogre::FrameEvent& evt){
 
 	//이거는 나중에 스위치나 뭐로 해서 따로 플레이어들용 만들어야할듯
 
+	//네트워크쪾 버그때문에 접음
+	//Ogre::Vector3 ppos(cli.ax, cli.ay, cli.az);
+	//ObjNode[cli.other_num]->setPosition(ppos);
+	//hkVector4 pp(ObjNode[cli.other_num]->getPosition().x, ObjNode[cli.other_num]->getPosition().y, ObjNode[cli.other_num]->getPosition().z);//충돌박스 이동부분
+	//physics.setCubePosition(pp, cli.other_num);
+
 	for (int i = 0; i < OBJ_NUM; i++){//2 대신 나중에 OBJ_NUM이게 들어가야되
+		
 		p[i] = physics.getCubePosition(i);
 		pos[i] = Ogre::Vector3(p[i](0), p[i](1), p[i](2));
 		ObjNode[i]->setPosition(pos[i]);
 	}
-
+	
 	return BaseApplication::frameRenderingQueued(evt);
 }
 void Application_main::set_obj(){
@@ -237,15 +243,26 @@ bool Application_main::processUnbufferedInput(const Ogre::FrameEvent& fe)
 			dirVec.x += move;
 	}
 
-	if (ObjNode[PLAYER]->getPosition().y >= 0.0f)
+	if (ObjNode[cli.player_num]->getPosition().y >= 0.0f)
 	{
 		//오브젝트 이동 후에 콜리더 이동해야한다..
+		//네트워크쪽 버그때문에 접음
+		//cli.set_pos(ObjNode[cli.player_num]->getPosition().x, ObjNode[cli.player_num]->getPosition().y, ObjNode[cli.player_num]->getPosition().z);
+		//mSceneMgr->getSceneNode("HeadNode")->translate(//오브젝트 이동부분 
+		//	dirVec * fe.timeSinceLastFrame,
+		//	Ogre::Node::TS_LOCAL);
+
+		//hkVector4 p(ObjNode[cli.player_num]->getPosition().x, ObjNode[cli.player_num]->getPosition().y, ObjNode[cli.player_num]->getPosition().z);//충돌박스 이동부분
+		//physics.setCubePosition(p, cli.player_num);
+
+		cli.set_pos(ObjNode[PLAYER]->getPosition().x, ObjNode[PLAYER]->getPosition().y, ObjNode[PLAYER]->getPosition().z);
 		mSceneMgr->getSceneNode("HeadNode")->translate(//오브젝트 이동부분 
 			dirVec * fe.timeSinceLastFrame,
 			Ogre::Node::TS_LOCAL);
 
 		hkVector4 p(ObjNode[PLAYER]->getPosition().x, ObjNode[PLAYER]->getPosition().y, ObjNode[PLAYER]->getPosition().z);//충돌박스 이동부분
 		physics.setCubePosition(p, PLAYER);
+	
 	}
 	
 	//ui update

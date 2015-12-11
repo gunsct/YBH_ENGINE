@@ -14,7 +14,6 @@ This source file is part of the
       http://www.ogre3d.org/tikiwiki/
 -----------------------------------------------------------------------------
 */
-
 #ifndef __Application_main_h_
 #define __Application_main_h_
 
@@ -47,7 +46,7 @@ using namespace irrklang;
 
 
 //네트워크 
-//#include "../network/Client.h"
+#include "../network/Client.h"
 
 
 
@@ -124,5 +123,8 @@ private:
 	
 	//갱신부분
 	bool processUnbufferedInput(const Ogre::FrameEvent& fe);
+
+	//네트워크
+	Client cli;
 };
 #endif // #ifndef __Application_main_h_

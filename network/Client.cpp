@@ -31,12 +31,14 @@ Client::Client(){
 	WSAStartup(MAKEWORD(2, 2), &wsa);//윈속 초기화
 
 	retval = 0;
-	player_num = 0;
-	other_num = 0;
-	regi = 0;
-	x = 134.3235246f;
+	player_num = other_num = 0;
+	fugitive_num = catcher_num = 0;
+	regi = true;
+	endflag = false;
+	ax = ay = az = 0.0f;
+	/*x = 134.3235246f;
 	y = 1124.2323433f;
-	z = 42.42423423445f;
+	z = 42.42423423445f;*/
 }
 
 Client::~Client(){
@@ -80,71 +82,161 @@ void Client::set_connet(){
 	if (retval == SOCKET_ERROR) err_quit("connect()");
 }
 
-void Client::transfer(){
-	// 서버와 데이터 통신
-	while (1){
-		//오거에서는 좌표 직접받으니 테스트용은 필요없어
-		x += (float)(rand() % 10 - 5);
-		y += (float)(rand() % 10 - 5);
-		z += (float)(rand() % 10 - 5);
+void Client::MsgSender(packetHeader* packet)
+{
+	Cr.Enter();
 
-		// 데이터 입력
-		//printf("\n[보낼 데이터] ");
-		Cr.Enter();
-		//패킷 제작
-		strcpy(buf, Ps.packeting(player_num, other_num, regi, x, y, z));
+	ZeroMemory(buf, sizeof(buf));
+
+	switch (packet->m_Type)
+	{
+	case PT_CLIREGI:
+		memcpy(buf, packet, sizeof(packetClientRegi));
+		retval = send(sock, buf, sizeof(packetClientRegi), 0);
+		break;
+
+	case PT_SETPOS:
+		memcpy(buf, packet, sizeof(packetSetPos));
+		retval = send(sock, buf, sizeof(packetSetPos), 0);
+		break;
+
+	case PT_END:
+		memcpy(buf, packet, sizeof(packetEnd));
+		retval = send(sock, buf, sizeof(packetEnd), 0);
+		break;
+	}
+	// 데이터 보내기
+	printf("[TCP 클라이언트] %d바이트를 보냈습니다.\n", retval);
+	printf("[보낸 데이터] %s\n", buf);
+
+	Cr.Leave();
+}
+
+int Client::MsgReceiver()
+{
+	int Bytes = 0;
+
+	ZeroMemory(buf, sizeof(buf));
+
+	Bytes = recvn(sock, buf, sizeof(packetHeader), 0);
+
+	packetHeader packetheader;
+
+	memcpy(&packetheader, buf, sizeof(packetHeader));
+	//std::cout<<Bytes<<std::endl;
+	if (Bytes == SOCKET_ERROR)
+		return SOCKET_ERROR;
+	else
+	{
+		switch (packetheader.m_Type)
+		{
+		case PT_CLIREGI:
+			
+			Bytes = recvn(sock, &buf[Bytes], packetheader.m_uiRemainsize, 0);
+
+			memcpy(&RegiCli, buf, sizeof(packetClientRegi));
+
+			player_num = RegiCli.cli_num;
+			regi = RegiCli.check_regi;
+
+			//// 받은 데이터 출력
+			//printf("[TCP 클라이언트] %d바이트를 받았습니다.\n", Bytes);
+			//printf("[받은 데이터] %d %d\n", player_num, regi);
+			break;
+
+		case PT_SETPOS:
+			Bytes = recvn(sock, &buf[Bytes], packetheader.m_uiRemainsize, 0);
+
+			
+			memcpy(&Pos, buf, sizeof(packetSetPos));
+
+			other_num = Pos.cli_num;
+			ax = Pos.xPos;
+			ay = Pos.yPos;
+			az = Pos.zPos;
+			//// 받은 데이터 출력
+			//printf("[TCP 클라이언트] %d바이트를 받았습니다.\n", Bytes);
+			//printf("[받은 데이터] %d %f %f %f\n", other_num, ax, ay, az);
+			break;
+
+		case PT_START:
+			Bytes = recvn(sock, &buf[Bytes], packetheader.m_uiRemainsize, 0);
+
+			
+
+			memcpy(&Start, buf, sizeof(packetStart));
+
+			start = clock();
+			fugitive_num =  Start.fugitive_num;
+			//// 받은 데이터 출력
+			//printf("[TCP 클라이언트] %d바이트를 받았습니다.\n", Bytes);
+			//printf("[받은 데이터] %d\n", fugitive_num);
+			break;
+
+		case PT_END://그냥 따로 함수할거없이 여기서 끝내자..
+			Bytes = recvn(sock, &buf[Bytes], packetheader.m_uiRemainsize, 0);
+			
 		
-		// 데이터 보내기
-		retval = send(sock, buf, strlen(buf), 0);
-		if (retval == SOCKET_ERROR){
-			err_display("send()");
+
+			memcpy(&End, buf, sizeof(packetEnd));
+
+			catcher_num = End.catcher_num;//잡은사람 번호
+			duration = End.cTime;
+
+			//// 받은 데이터 출력
+			//printf("[TCP 클라이언트] %d바이트를 받았습니다.\n", Bytes);
+			//printf("[받은 데이터] %d %f\n", catcher_num, duration);
 			break;
 		}
-		printf("[TCP 클라이언트] %d바이트를 보냈습니다.\n", retval);
-		printf("[보낸 데이터] %s\n", buf);
-		Cr.Leave();
+	}
+
+	return Bytes;
+}
+void Client::transfer(){
+	// 서버와 데이터 통신
+//	while (1){
+		if (regi == true){//레지스트 최초 등록
+			packetClientRegi RegiCli(0, regi);
+			MsgSender(&RegiCli);
+		}
+
+		else{
+			if (endflag == false){
+				packetSetPos Pos(player_num, x, y, z);
+				MsgSender(&Pos);
+			}
+
+			else{
+				finish = clock();
+				duration = (double)(finish - start) / CLOCKS_PER_SEC;
+
+				packetEnd End(catcher_num, duration);
+				MsgSender(&End);
+			}
+		}
 
 		
 		// 데이터 받기
-		retval = recvn(sock, buf, retval, 0);
-		if (retval == SOCKET_ERROR){
-			err_display("recv()");
-			break;
-		}
-		else if (retval == 0)
-			break;
+		MsgReceiver();
 
-		// 받은 데이터 출력
-		buf[retval] = '\0';
-		printf("[TCP 클라이언트] %d바이트를 받았습니다.\n", retval);
-		printf("[받은 데이터] %s\n", buf);
 		
-
-		//파싱 구현
-		Ps.parsing_msg(buf);
-		player_num = Ps.get_pn();
-		other_num = Ps.get_on();
-		regi = Ps.get_rg();
-		x = Ps.get_xp();
-		y = Ps.get_yp();
-		z = Ps.get_zp();
-		//printf("%d %d %d %f %f %f\n", player_num, other_num, regi, x, y, z);
-
-		regi = 1;
-		//Sleep(2000);
-	}
+		//Sleep(500);
+//	}
 }
 
 void Client::run_client(){
 	set_socket();
 	set_connet();
-	transfer();
+	//transfer();
 }
 
 void Client::set_pos(float _x, float _y, float _z){
 	x = _x;
 	y = _y;
 	z = _z;
+}
+void Client::set_flag(bool _flag){
+	endflag = _flag;
 }
 
 float Client::get_xp(){

@@ -1,13 +1,17 @@
-﻿빌드 시작: 2015-12-06 오후 7:01:59
+﻿빌드 시작: 2015-12-11 오후 2:31:36
      1>2 노드의 "C:\Users\gunsct\Desktop\project\graphics\YBH_Engine\YBH_Engine\YBH_Engine.vcxproj" 프로젝트(Build 대상)입니다.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\Users\gunsct\Downloads\OgreSDK_1.9\include /IC:\Users\gunsct\Downloads\OgreSDK_1.9\include\OIS /IC:\Users\gunsct\Downloads\OgreSDK_1.9\include\OGRE /IC:\Users\gunsct\Downloads\OgreSDK_1.9\Samples\Common\include /IC:\Users\gunsct\Downloads\OgreSDK_1.9\boost /IC:\Users\gunsct\Downloads\OgreSDK_1.9\include\OGRE\Overlay /IC:\Users\gunsct\Downloads\hk2014_1_0_r1\Source /IC:\Users\gunsct\Downloads\hk2014_1_0_r1\Demo /I"C:\Users\gunsct\Downloads\irrKlang-32bit-1.5.0\irrKlang-1.5.0\include" /IC:\Users\gunsct\Desktop\project\graphics\YBH_Engine\YBH_Engine\resource /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D HK_CONFIG_SIMD=1 /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main\Application_main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\Users\gunsct\Downloads\OgreSDK_1.9\include /IC:\Users\gunsct\Downloads\OgreSDK_1.9\include\OIS /IC:\Users\gunsct\Downloads\OgreSDK_1.9\include\OGRE /IC:\Users\gunsct\Downloads\OgreSDK_1.9\Samples\Common\include /IC:\Users\gunsct\Downloads\OgreSDK_1.9\boost /IC:\Users\gunsct\Downloads\OgreSDK_1.9\include\OGRE\Overlay /IC:\Users\gunsct\Downloads\hk2014_1_0_r1\Source /IC:\Users\gunsct\Downloads\hk2014_1_0_r1\Demo /I"C:\Users\gunsct\Downloads\irrKlang-32bit-1.5.0\irrKlang-1.5.0\include" /IC:\Users\gunsct\Desktop\project\graphics\YBH_Engine\YBH_Engine\resource /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D HK_CONFIG_SIMD=1 /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main\Application_main.cpp network\Client.cpp
+         Client.cpp
+     1>c:\users\gunsct\desktop\project\graphics\ybh_engine\ybh_engine\network\client.cpp(213): warning C4244: '인수' : 'double'에서 'clock_t'(으)로 변환하면서 데이터가 손실될 수 있습니다.
          Application_main.cpp
-     1>c:\users\gunsct\desktop\project\graphics\ybh_engine\ybh_engine\main\application_main.cpp(180): warning C4305: '초기화 중' : 'double'에서 'Ogre::Real'(으)로 잘립니다.
+     1>c:\users\gunsct\desktop\project\graphics\ybh_engine\ybh_engine\main\application_main.cpp(186): warning C4305: '초기화 중' : 'double'에서 'Ogre::Real'(으)로 잘립니다.
+         코드를 생성하고 있습니다...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\gunsct\Desktop\project\graphics\YBH_Engine\Debug\YBH_Engine.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\gunsct\Downloads\OgreSDK_1.9\lib\Debug /LIBPATH:C:\Users\gunsct\Downloads\OgreSDK_1.9\boost\lib /LIBPATH:C:\Users\gunsct\Downloads\hk2014_1_0_r1\Demo\Demos /LIBPATH:C:\Users\gunsct\Downloads\hk2014_1_0_r1\Lib\win32_vs2012_win7\debug /LIBPATH:"C:\Users\gunsct\Downloads\irrKlang-32bit-1.5.0\irrKlang-1.5.0\lib\Win32-visualStudio" hkBase.lib hkCompat.lib hkGeometryUtilities.lib hkInternal.lib hkSerialize.lib hkVisualize.lib hkaInternal.lib hkImageUtilities.lib hkaAnimation.lib hkaPhysics2012Bridge.lib hkpConstraint.lib hkpConstraintSolver.lib hkpCollide.lib hkpDynamics.lib hkpInternal.lib hkpUtilities.lib hkpVehicle.lib hkcdCollide.lib hkcdInternal.lib lua5.1.lib OgreMain_d.lib OIS_d.lib OgreOverlay_d.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\gunsct\Desktop\project\graphics\YBH_Engine\Debug\YBH_Engine.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\gunsct\Desktop\project\graphics\YBH_Engine\Debug\YBH_Engine.lib" /MACHINE:X86 Debug\Lua_loader.obj
          Debug\BaseApplication.obj
          Debug\Application_main.obj
+         Debug\Client.obj
          Debug\Havok.obj
          Debug\Physics.obj
          Debug\buttonGUI.obj
@@ -21,4 +25,4 @@
 
 빌드했습니다.
 
-경과 시간: 00:00:39.13
+경과 시간: 00:00:30.23

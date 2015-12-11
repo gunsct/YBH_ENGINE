@@ -50,9 +50,6 @@
     <ClCompile Include="network\Client.cpp">
       <Filter>소스+헤더 파일\network</Filter>
     </ClCompile>
-    <ClCompile Include="network\Parser.cpp">
-      <Filter>소스+헤더 파일\network</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main\BaseApplication.h">
@@ -82,7 +79,7 @@
     <ClInclude Include="network\Client.h">
       <Filter>소스+헤더 파일\network</Filter>
     </ClInclude>
-    <ClInclude Include="network\Parser.h">
+    <ClInclude Include="network\Packet.h">
       <Filter>소스+헤더 파일\network</Filter>
     </ClInclude>
     <ClInclude Include="network\Synchronization.h">

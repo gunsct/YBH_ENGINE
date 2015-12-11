@@ -1,12 +1,14 @@
-#pragma once
 #pragma comment(lib, "ws2_32")
-#include <winsock2.h>
+#include <winsock.h>
+#include <Windows.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <conio.h>
 #include <time.h>
+#include <process.h>
 
-#include "Parser.h"
+#include "Packet.h"
+//#include "Parser.h"
 #include "Synchronization.h"
 
 #define SERVERIP   "127.0.0.1"
@@ -24,29 +26,43 @@ private:
 	char buf[BUFSIZE + 1];
 	int len;
 
+	
+
+public:
+	Client();
+	~Client();
+
 	//패킷에 사용할 변수
 	int retval;
 	int player_num;
 	int other_num;
-	int regi;
+	int fugitive_num, catcher_num;
+	bool regi, endflag;
 	float x, y, z;
+	float ax, ay, az;
 
-	Parser Ps;
+	//Parser Ps;
+	clock_t start, finish;//타이머용
+	double duration;
 
-	clock_t start, finish;
-public:
-	Client();
-	~Client();
+	packetClientRegi RegiCli;
+	packetSetPos Pos;
+	packetStart Start;
+	packetEnd End;
 
 	int recvn(SOCKET s, char *buf, int len, int flags);
 
 	void set_socket();
 	void set_connet();
+	void MsgSender(packetHeader* packet);
+	int MsgReceiver();
 	void transfer();
 
 	void run_client();
 
+
 	void set_pos(float _x, float _y, float _z);
+	void set_flag(bool _flag);
 	float get_xp();
 	float get_yp();
 	float get_zp();
