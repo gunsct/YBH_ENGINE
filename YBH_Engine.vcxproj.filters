@@ -93,5 +93,6 @@
     <None Include="..\..\..\..\..\Downloads\OgreSDK_1.9\bin\resource\set_ui.lua">
       <Filter>리소스 파일</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Physics" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEIIgAAABAAgABAIJAIAAAEAAAAAIAAAAAAQAAAA=</HashCode>
+      <FileName>physics\Physics.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sound" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAICAAAAAAAAAAAAAAAAEAAAAAAAAAABIAAAAQAAAA=</HashCode>
+      <FileName>ui_sound\Sounds.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Object_info" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQIAACAwAAAABAFAAAAAAIBABAAEAAAAAIACAAIAAAA=</HashCode>
+      <FileName>lua\Lua_loader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gui_info" Collapsed="true">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAYAACAQAAAAAAHAAAAAIABABgAAAIAAAAAAAAIAAAA=</HashCode>
+      <FileName>lua\Lua_loader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BaseApplication" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EigKAEAAAABAEAwJCAAQAQIAQCAhACAQAMABTDIIQQA=</HashCode>
+      <FileName>main\BaseApplication.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Application_main" Collapsed="true">
+    <Position X="3.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAIAAAAAAABEgABAAIJAIJAAACEBAgAAEIAAAAgAAA=</HashCode>
+      <FileName>main\Application_main.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Client" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAcAAAICACQGgAAgBACBAAAAACPAgACGASBgCQA1IBQ=</HashCode>
+      <FileName>network\Client.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="packetHeader" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAACAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>network\Packet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="packetClientRegi" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>network\Packet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="packetStart" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>network\Packet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="packetEnd" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>network\Packet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="packetSetPos" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAABAgAAAAAAAAAIAAAAAAAQAAAAA=</HashCode>
+      <FileName>network\Packet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Critical" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAEEAAEAABAAAAAAAAA=</HashCode>
+      <FileName>network\Synchronization.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="buttonGUI::buttonPosition" Collapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQIAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>ui_sound\buttonGUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="buttonGUI::button" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>xcQcJEDBCoBAkBhUGIgAJBUiAIRkbgBABQAMwQBWBNA=</HashCode>
+      <FileName>ui_sound\buttonGUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="buttonGUI::buttonManager" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EFZakoCPEgAGggABYETNEEQAAggQsAAAogABgAANUAE=</HashCode>
+      <FileName>ui_sound\buttonGUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="buttonGUI::buttonMesh" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAADoAQAAAhAAZEQEAQgNAiCQAUhAACA0AEAAAMAgE=</HashCode>
+      <FileName>ui_sound\buttonGUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="buttonGUI::buttonEvent" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABABAAAAQAAAAAAAAAAAAAAABAAAgAAAAAAAEAAAAA=</HashCode>
+      <FileName>ui_sound\buttonGUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="buttonGUI::buttonTextColor" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIMA=</HashCode>
+      <FileName>ui_sound\buttonGUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="buttonGUI::textScheme" Collapsed="true">
+    <Position X="15.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAABAAAAAACAAAAAACACAAAAAAAAAAAAQY=</HashCode>
+      <FileName>ui_sound\buttonGUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="buttonGUI::textInputArea" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAACLIAAABAgAKIUACBQECAhAQAAADAAAAESCAQBgAE=</HashCode>
+      <FileName>ui_sound\buttonGUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="soundtype" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAEAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>resource.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="error_list" Collapsed="true">
+    <Position X="11.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>network\Packet.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="packetType" Collapsed="true">
+    <Position X="13.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACIAIABAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>network\Packet.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="buttonGUI::relativePosition" Collapsed="true">
+    <Position X="15.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAgAAAAAAAGAAAAAAAEBggAAAAAAAIAA=</HashCode>
+      <FileName>ui_sound\buttonGUI.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="buttonGUI::buttonAction" Collapsed="true">
+    <Position X="10" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAFAAAAAgIQAAAAAAAAAAAAAAAYAAAAAAAAAAABAAEA=</HashCode>
+      <FileName>ui_sound\buttonGUI.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>
