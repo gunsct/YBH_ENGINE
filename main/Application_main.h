@@ -127,5 +127,18 @@ private:
 
 	//네트워크
 	Client cli;
+
+	//애니메이션
+	bool nextLocation();
+
+	std::deque<Ogre::Vector3> mWalkList;
+
+	Ogre::Real mDistance;
+	Ogre::Real mWalkSpd;
+	Ogre::Vector3 mDirection;
+	Ogre::Vector3 mDestination;
+	Ogre::AnimationState* mAnimationState;
+	Ogre::Entity* mEntity;
+	Ogre::SceneNode* mNode;
 };
 #endif // #ifndef __Application_main_h_

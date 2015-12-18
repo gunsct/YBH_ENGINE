@@ -22,6 +22,18 @@ void Physics::SetUp(void)
 	{
 		world = new hkpWorld( hkpWorldCinfo() );
 
+
+
+
+
+
+
+
+
+
+
+
+
 		// Register all collision agents
 		// It's important to register collision agents before adding any entities to the world.
 		hkpAgentRegisterUtil::registerAllAgents( world->getCollisionDispatcher() );

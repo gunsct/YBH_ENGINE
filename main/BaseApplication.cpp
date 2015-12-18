@@ -27,7 +27,7 @@ BaseApplication::BaseApplication(void)
     mTrayMgr(0),
     mCameraMan(0),
     mDetailsPanel(0),
-    mCursorWasVisible(false),
+    mCursorWasVisible(true),
     mShutDown(false),
     mInputManager(0),
     mMouse(0),
