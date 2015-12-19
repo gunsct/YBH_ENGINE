@@ -39,12 +39,17 @@ void Application_main::callLua(const char* func_name, lua_CFunction func, const 
 	lua_close(LS);
 }
 
-Application_main::Application_main(void){}
+Application_main::Application_main(void){
+}
 
 Application_main::~Application_main(void){}
 
 void Application_main::createScene(void)
 {
+	Camera* camera = mSceneMgr->createCamera("MainCam");
+	camera->setNearClipDistance(.01f);
+	camera->setFarClipDistance(10000);
+
 	//background sound
 	sound.backgroud(1.0f);
 	//obj setting
@@ -181,6 +186,34 @@ void Application_main::set_button(){
 		buttonMgr->createButton(gui_info[i].getentityname(), gui_info[i].getmeshname(), buttonPosition(TOP_RIGHT, gui_info[i].getpx(), gui_info[i].getpy()), gui_info[i].getsx(), gui_info[i].getsy());
 	}
 	
+
+	button * b;
+	// create dinoRider button set.
+	b = buttonMgr->createButton("dinoRider", "dinoMat", buttonPosition(30, 70), 256, 256)->
+		setMovable(true, false); //allow dinoRider to be dragged relative to mouse,  ie do not center when grabbed.
+	
+	b->createChildButton("one", "buttonMat", buttonPosition(TOP_LEFT, 0, 5), 200, 32)->
+		addTextArea("oneText", "click", 5, 5, TextAreaOverlayElement::Left);
+	b->createChildButton("two", "buttonMat", buttonPosition(TOP_LEFT, 0, 40), 200, 32)->
+		addTextArea("twoText", "here", 5, 5, TextAreaOverlayElement::Left);
+	b->createChildButton("three", "buttonMat", buttonPosition(TOP_LEFT, 0, 75), 200, 32)->
+		addTextArea("threeText", "to", 5, 5, TextAreaOverlayElement::Left);
+	b->createChildButton("four", "buttonMat", buttonPosition(TOP_LEFT, 0, 110), 200, 32)->
+		addTextArea("fourText", "change", 5, 5, TextAreaOverlayElement::Left);
+	b->createChildButton("five", "buttonMat", buttonPosition(TOP_LEFT, 0, 145), 200, 32)->
+		addTextArea("fiveText", "cursor", 5, 5, TextAreaOverlayElement::Left);
+	b->createChildButton("six", "buttonMat", buttonPosition(TOP_LEFT, 0, 180), 200, 32)->
+		addTextArea("sixText", "style", 5, 5, TextAreaOverlayElement::Left);
+
+
+	//dino with a background
+	buttonMgr->createButton("dinoWithBG", "sparkMat", buttonPosition(TOP_RIGHT, 200, 200), 128, 128)->
+		setMovable(true)->
+		addButtonMesh("dino1", "dino.mesh", 0, 0, 128, 128)->
+		setRotatable(true, false)->  // lets only have him rotate horizontally
+		setRotation(45, 45, 0);
+
+
 	buttonMgr->resetScreenResolution();
 }
 

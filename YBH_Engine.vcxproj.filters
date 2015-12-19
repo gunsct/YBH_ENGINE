@@ -85,6 +85,9 @@
     <ClInclude Include="network\Synchronization.h">
       <Filter>소스+헤더 파일\network</Filter>
     </ClInclude>
+    <ClInclude Include="mouseCursor.h">
+      <Filter>소스+헤더 파일\ui_sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\..\Downloads\OgreSDK_1.9\bin\resource\set_obj.lua">

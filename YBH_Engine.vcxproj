@@ -24,6 +24,7 @@
     <ClInclude Include="lua\Lua_loader.h" />
     <ClInclude Include="main\BaseApplication.h" />
     <ClInclude Include="main\Application_main.h" />
+    <ClInclude Include="mouseCursor.h" />
     <ClInclude Include="network\Client.h" />
     <ClInclude Include="network\Packet.h" />
     <ClInclude Include="network\Synchronization.h" />
